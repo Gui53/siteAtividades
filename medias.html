@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos/texto.css">
+    <link rel="stylesheet" href="./estilos/estilizaLista.css">
+    <title>Document</title>
+    <style>
+        input[type=number]{
+            width: calc(100%-10px);
+            padding: 5px;
+            margin-bottom: 10px;
+            
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+        }
+    </style>
+</head>
+<body class="textoW">
+    <iframe src="header.html" frameborder="0" width="100%"></iframe>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" target="main">Home</a></li>
+            <li><a href="maior.html">Maioridade</a></li>
+            <li><a class="active" href="medias.html" target="main">Calcula médias</a></li>
+        </ul>
+      </nav>
+
+
+    <form>
+        <label for="nota1"> Informe sua 1° nota</label>
+        <input type="number" id="nota1" placeholder="Nota 1">
+
+        <label for="nota2"> Informe sua 2° nota</label>
+        <input type="number" id="nota2" placeholder="Nota 2">
+        
+        <label for="nota3"> Informe sua 3° nota</label>
+        <input type="number" id="nota3" placeholder="Nota 3">
+        
+        <label for="freq">Qual a sua frequencia?</label>
+        <input type="number" id="freq" placeholder="Frequencia:">
+        <hr>
+        <button onclick="salvar()">Salvar</button>
+    </form>
+    
+
+    <script>
+        function salvar(){
+            let n1 = document.getElementById("nota1").value
+            if(n1 ==''){
+                alert("Informe nota.")
+                nota1.focus();
+                return
+            }
+            if( n1 < 0 || n1 > 10){
+                alert("Insira uma nota válida!")
+                n1.focus();
+                return
+            }
+
+            let n2 = document.getElementById("nota2").value
+            if(n2 == '' || n2 < 0 || n2 > 10){
+                alert(" Insira uma nota válida!")
+                n2.focus();
+                return
+            }
+
+            let n3 = document.getElementById("nota3").value
+            if(n3 == '' || n3 < 0 || n3 > 10){
+                alert(" Insira uma nota válida!")
+                n3.focus();
+                return
+            }
+            let frequencia = document.getElementById("freq")
+            if(frequencia.value == '' || frequencia.value < 0 || frequencia.value > 100){
+                alert("Insira uma frequência válida")
+                frequencia.focus()
+                return            
+            }
+
+            let nota1 = parseFloat(n1)
+            let nota2 = parseFloat(n2)
+            let nota3 = parseFloat(n3)
+            let freq = parseFloat(frequencia.value)
+
+            
+            let media = (nota1 + nota2 + nota3)/3
+            media.toFixed(2)
+
+            
+            if(media < 6 || freq < 75){
+                alert("Você foi reprovado, com média " + media.toFixed(2) + " e frequencia de " + freq + "%")
+                
+            }else{
+                alert("Você foi aprovado, parabéns!")
+                alert("Sua media é de " + media.toFixed(2))
+            }
+        }
+    </script>
+
+</body>
+</html>
