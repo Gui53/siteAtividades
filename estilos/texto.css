@@ -1,0 +1,50 @@
+.texto1{
+    font-size: 30px;
+    font-family: 'Times New Roman';
+    text-align: center;
+    background-color: crimson ;
+}
+.texto2{
+    font-size: 19px;
+    margin: 9px;
+    margin-block-end: 0px;
+    padding: 5px;
+    font-family: 'Times New Roman';
+}
+.texto3{
+    font-size: 17px;
+    margin: 5px;
+    margin-block-end: 10px;
+    padding: 1px;
+    font-family: 'Times New Roman';
+}
+.texto4{
+    font-size: 20px;
+    margin: 5px;
+    margin-block-end: 10px;
+    padding: 1px;
+    text-align: center;
+    font-family: 'Times New Roman';
+}
+.textoB{
+    background-color: black;
+}
+.textoW{
+    color: aliceblue;
+    font-size: 17px;
+    margin: 5px;
+    margin-block-end: 10px;
+    padding: 1px;
+    font-family: 'Times New Roman';
+
+}
+.container{
+    width: 15%;
+    margin: auto;
+    background-color: red;
+
+}
+body{
+    background-image: linear-gradient(to right , #083661, #0D59A1,
+     #137DE0);
+}
