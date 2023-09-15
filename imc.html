@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos/estilizaLista.css">
+    <link rel="stylesheet" href="./estilos/footer.css">
+    <link rel="stylesheet" href="./estilos/texto.css">
+    <link rel="stylesheet" href="./estilos/form.css">
+    <style>
+       h2{
+        color: white;
+        padding: 7px;
+       }
+       
+    </style>
+
+    <title>IMC</title>
+</head>
+<body>
+    <iframe src="header.html" frameborder="0" width="100%"></iframe>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" target="_self">Home</a></li>
+            <li><a href="maior.html" target="_self">Maioridade</a></li>
+            <li><a href="medias.html" target="_self">Calcula Medias</a></li>
+            <li><a class="active" href="#">IMC</a></li>
+        </ul>
+    </nav>
+    <h2>Calcule seu Índice de Massa Corporal (IMC)</h2>
+    <form>
+        <label for="peso">Informe seu peso:</label>
+        <input type="number" id="peso" placeholder="Seu peso:" required>
+
+        <label for="altura">Informe sua altura</label>
+        <input type="number" id="altura" placeholder="Sua altura:" required>
+        <button onclick="salvar()">Salvar</button>
+    </form>
+    <script>
+        function salvar(){
+            let ps = document.getElementById("peso").value
+            let alt = document.getElementById("altura").value
+
+            let peso = parseFloat(ps)
+            let altura = parseFloat(alt)
+
+            let imc = peso/(altura*altura)
+
+            if(imc < 17) {
+                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta muito abaixo do peso!")
+
+            }
+            else if(imc >= 17 && imc < 18.49){
+                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta abaixo do peso!")
+            }else if(imc >=18.49 && imc < 24.99){
+                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com o peso normal!")
+
+            }else if(imc >= 24.99 && imc < 29.99){
+                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com acima do peso!")
+            }else if(imc >=29.99 && imc < 34.99){
+                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com obesidade I!")
+            }else if(imc >= 34.99 && imc < 39.99){
+                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com obesidade II(severa)!")
+            }
+        }
+    </script>
+    <script src="./footer.js"></script>
+
+</body>
+</html>

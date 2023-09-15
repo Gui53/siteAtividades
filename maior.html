@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./estilos/texto.css">
     <link rel="stylesheet" href="./estilos/estilizaLista.css">
+    <link rel="stylesheet" href="./estilos/footer.css">
+    <link rel="stylesheet" href="./estilos/form.css">
     <title>Document</title>
     <style>
-      input{
-        margin-top: 10px;
-        
-      }
+      
     </style>
 </head>
 <body>
@@ -18,15 +17,19 @@
 
   <nav>
     <ul>
-        <li><a href="index.html" target="main">Home</a></li>
-        <li><a class="active" href="maior.html">Maioridade</a></li>
-        <li><a href="medias.html" target="main">Calcula médias</a></li>
+        <li><a href="index.html" target="_self">Home</a></li>
+        <li><a class="active" href="#">Maioridade</a></li>
+        <li><a href="medias.html" target="_self">Calcula médias</a></li>
+        <li><a href="imc.html" target="_self">IMC</a></li>
+
     </ul>
   </nav>
-
+  <form>
     <label for="idade" class="textoW">Informe sua idade:</label>
     <input type="number" id="idade" placeholder="Sua idade:">
     <button onclick="salvar()">Salvar</button>
+  </form>
+   
 
     <script>
 
@@ -47,6 +50,7 @@
           }
         }
     </script>
+    <script src="./footer.js"></script>
 
 </body>
 </html>
