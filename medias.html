@@ -13,92 +13,87 @@
             padding: 7px;
             color: white;
         }
+        .rodape{
+            position: absolute;
+        }
     </style>
 </head>
 <body>
     <iframe src="header.html" frameborder="0" width="100%"></iframe>
-
-    <nav>
-        <ul>
-            <li><a href="index.html" target="_self">Home</a></li>
-            <li><a href="maior.html" target="_self">Maioridade</a></li>
-            <li><a class="active" href="#">Calcula médias</a></li>
-            <li><a href="imc.html" target="_self">IMC</a></li>
-        </ul>
-      </nav>
-
-      <h2>Calcule sua Medias Escolares e saiba se com essas notas você passaria de ano!</h2>
-    <form>
-        <label for="nota1"> Informe sua 1° nota</label>
-        <input type="number" id="nota1" placeholder="Nota 1">
-
-        <label for="nota2"> Informe sua 2° nota</label>
-        <input type="number" id="nota2" placeholder="Nota 2">
-        
-        <label for="nota3"> Informe sua 3° nota</label>
-        <input type="number" id="nota3" placeholder="Nota 3">
-        
-        <label for="freq">Qual a sua frequencia?</label>
-        <input type="number" id="freq" placeholder="Frequencia:">
-
-        <button  onclick="salvar()">Salvar</button>
-    </form>
+    <div>
+        <h2>Calcule sua Medias Escolares e saiba se com essas notas você passaria de ano!</h2>
+        <form>
+            <label for="nota1"> Informe sua 1° nota</label>
+            <input type="number" id="nota1" placeholder="Nota 1">
     
-
-    <script>
-        function salvar(){
-            let n1 = document.getElementById("nota1").value
-            if(n1 ==''){
-                alert("Informe nota.")
-                nota1.focus();
-                return
-            }
-            if( n1 < 0 || n1 > 10){
-                alert("Insira uma nota válida!")
-                n1.focus();
-                return
-            }
-
-            let n2 = document.getElementById("nota2").value
-            if(n2 == '' || n2 < 0 || n2 > 10){
-                alert(" Insira uma nota válida!")
-                n2.focus();
-                return
-            }
-
-            let n3 = document.getElementById("nota3").value
-            if(n3 == '' || n3 < 0 || n3 > 10){
-                alert(" Insira uma nota válida!")
-                n3.focus();
-                return
-            }
-            let frequencia = document.getElementById("freq")
-            if(frequencia.value == '' || frequencia.value < 0 || frequencia.value > 100){
-                alert("Insira uma frequência válida")
-                frequencia.focus()
-                return            
-            }
-
-            let nota1 = parseFloat(n1)
-            let nota2 = parseFloat(n2)
-            let nota3 = parseFloat(n3)
-            let freq = parseFloat(frequencia.value)
-
+            <label for="nota2"> Informe sua 2° nota</label>
+            <input type="number" id="nota2" placeholder="Nota 2">
             
-            let media = (nota1 + nota2 + nota3)/3
-            media.toFixed(2)
-
+            <label for="nota3"> Informe sua 3° nota</label>
+            <input type="number" id="nota3" placeholder="Nota 3">
             
-            if(media < 6 || freq < 75){
-                alert("Você foi reprovado, com média " + media.toFixed(2) + " e frequencia de " + freq + "%")
-                
-            }else{
-                alert("Você foi aprovado, parabéns!")
-                alert("Sua media é de " + media.toFixed(2))
-            }
-        }
-    </script>
+            <label for="freq">Qual a sua frequencia?</label>
+            <input type="number" id="freq" placeholder="Frequencia:">
+    
+            <button  onclick="salvar()">Salvar</button>
+        </form>
+    </div>
+
+   
     <script src="./footer.js"></script>
 
 </body>
+<script>
+    function salvar(){
+        let n1 = document.getElementById("nota1").value
+        if(n1 ==''){
+            alert("Informe nota.")
+            nota1.focus();
+            return
+        }
+        if( n1 < 0 || n1 > 10){
+            alert("Insira uma nota válida!")
+            n1.focus();
+            return
+        }
+
+        let n2 = document.getElementById("nota2").value
+        if(n2 == '' || n2 < 0 || n2 > 10){
+            alert(" Insira uma nota válida!")
+            n2.focus();
+            return
+        }
+
+        let n3 = document.getElementById("nota3").value
+        if(n3 == '' || n3 < 0 || n3 > 10){
+            alert(" Insira uma nota válida!")
+            n3.focus();
+            return
+        }
+        let frequencia = document.getElementById("freq")
+        if(frequencia.value == '' || frequencia.value < 0 || frequencia.value > 100){
+            alert("Insira uma frequência válida")
+            frequencia.focus()
+            return            
+        }
+
+        let nota1 = parseFloat(n1)
+        let nota2 = parseFloat(n2)
+        let nota3 = parseFloat(n3)
+        let freq = parseFloat(frequencia.value)
+
+        
+        let media = (nota1 + nota2 + nota3)/3
+        media.toFixed(2)
+
+        
+        if(media < 6 || freq < 75){
+            alert("Você foi reprovado, com média " + media.toFixed(2) + " e frequencia de " + freq + "%")
+            
+        }else{
+            alert("Você foi aprovado, parabéns!")
+            alert("Sua media é de " + media.toFixed(2))
+        }
+    }
+</script>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,64 +9,103 @@
     <link rel="stylesheet" href="./estilos/texto.css">
     <link rel="stylesheet" href="./estilos/form.css">
     <style>
-       h2{
-        color: white;
-        padding: 7px;
-       }
-       
+        h2 {
+            color: white;
+            padding: 7px;
+        }
+        footer{
+            position: static;
+        }
     </style>
 
     <title>IMC</title>
 </head>
+
 <body>
     <iframe src="header.html" frameborder="0" width="100%"></iframe>
 
-    <nav>
-        <ul>
-            <li><a href="index.html" target="_self">Home</a></li>
-            <li><a href="maior.html" target="_self">Maioridade</a></li>
-            <li><a href="medias.html" target="_self">Calcula Medias</a></li>
-            <li><a class="active" href="#">IMC</a></li>
-        </ul>
-    </nav>
-    <h2>Calcule seu Índice de Massa Corporal (IMC)</h2>
-    <form>
-        <label for="peso">Informe seu peso:</label>
-        <input type="number" id="peso" placeholder="Seu peso:" required>
+    <div>
+        <h2>Calcule seu Índice de Massa Corporal (IMC)</h2>
+        <form>
+            <label for="peso">Informe seu peso:</label>
+            <input type="number" id="peso" placeholder="Seu peso:" required>
 
-        <label for="altura">Informe sua altura</label>
-        <input type="number" id="altura" placeholder="Sua altura:" required>
-        <button onclick="salvar()">Salvar</button>
-    </form>
-    <script>
-        function salvar(){
-            let ps = document.getElementById("peso").value
-            let alt = document.getElementById("altura").value
+            <label for="altura">Informe sua altura</label>
+            <input type="number" id="altura" placeholder="Sua altura:" required>
+            <button onclick="salvar()">Salvar</button>
+        </form>
+        <div>
+            <table style="width: 40%;">
+                <tr>
+                    <th style="width: 60%;">Resultado</th>
+                    <th>Situação</th>
+                </tr>
+                <tr>
+                    <td>Abaixo de 17</td>
+                    <td>Muito abaixo do peso</td>
 
-            let peso = parseFloat(ps)
-            let altura = parseFloat(alt)
+                </tr>
+                <tr>
+                    <td>Entre 17 e 18,49</td>
+                    <td>Abaixo do peso</td>
+                <tr>
+                    <td>Entre 18,5 e 24,99</td>
+                    <td>Peso normal</td>
+                </tr>
+                <tr>
+                    <td>Entre 25 e 29,99</td>
+                    <td>Acima do peso </td>
+                </tr>
+                <tr>
+                    <td>Entre 30 e 34,99</td>
+                    <td>Obesidade I </td>
+                </tr>
+                <tr>
+                    <td>Entre 35 e 39,99</td>
+                    <td>Obesidade II (severa)</td>
+                </tr>
+                <tr>
+                    <td>Acima de 40 </td>
+                    <td>Obesidade III (mórbida)</td>
+                </tr>
 
-            let imc = peso/(altura*altura)
+                </tr>
+            </table>
+        </div>
 
-            if(imc < 17) {
-                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta muito abaixo do peso!")
-
-            }
-            else if(imc >= 17 && imc < 18.49){
-                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta abaixo do peso!")
-            }else if(imc >=18.49 && imc < 24.99){
-                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com o peso normal!")
-
-            }else if(imc >= 24.99 && imc < 29.99){
-                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com acima do peso!")
-            }else if(imc >=29.99 && imc < 34.99){
-                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com obesidade I!")
-            }else if(imc >= 34.99 && imc < 39.99){
-                alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com obesidade II(severa)!")
-            }
-        }
-    </script>
+    </div>
     <script src="./footer.js"></script>
 
 </body>
+<script>
+    function salvar() {
+        let ps = document.getElementById("peso")
+        let alt = document.getElementById("altura")
+
+        let peso = parseFloat(ps.value)
+        let altura = parseFloat(alt.value)
+
+        let imc = peso / (altura * altura)
+
+        if (imc < 17) {
+            alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta muito abaixo do peso!")
+
+        }
+        else if (imc >= 17 && imc < 18.49) {
+            alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta abaixo do peso!")
+        } else if (imc >= 18.49 && imc < 24.99) {
+            alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com o peso normal!")
+
+        } else if (imc >= 24.99 && imc < 29.99) {
+            alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com acima do peso!")
+        } else if (imc >= 29.99 && imc < 34.99) {
+            alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com obesidade I!")
+        } else if (imc >= 34.99 && imc < 39.99) {
+            alert("Você esta com o IMC de " + imc.toFixed(2) + " e você esta com obesidade II(severa)!")
+        } else if (imc > 40) {
+            alert("Você esta com IMC de " + imc.toFixe(2) + " e voce está com obesidade III(mórbida)")
+        }
+    }
+</script>
+
 </html>

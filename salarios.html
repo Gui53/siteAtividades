@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos/texto.css">
+    <link rel="stylesheet" href="./estilos/estilizaLista.css">
+    <link rel="stylesheet" href="./estilos/footer.css">
+    <link rel="stylesheet" href="./estilos/salario.css">
+
+    <title>CalculaSalario</title>
+    <style>
+        footer{
+            position: absolute;
+        }
+        input[type=number ]{
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="header.html" frameborder="0" width="100%"></iframe>
+    <div>
+        <form class="flex-direction: column; tex" >
+            <fieldset>
+                <legend>Funcionário</legend>
+                    <label for="func">Selecione Funcionário:</label>
+                    <select name="func" id="func" required>
+                        <option value="gerente">Gerente</option>
+                        <option value="supervisores">Supervisores</option>
+                        <option value="Operador">Operadores</option>
+                        <option value="Colaboradores">Colaboradores</option>
+                    </select>
+                    <label for="salario">Fale o salário</label>
+                    <input type="number" name="salario" id="salario" placeholder="Salário:">
+                    <button onclick="salvar()">Salvar</button>
+                </fieldset>
+        </form>
+    </div>
+    <script src="footer.js"></script>
+</body>
+<script>
+    function salvar(){
+        let novoSalario = 0;
+        let aumento = 0;
+        const salarioFloat = parseFloat(document.getElementById("salario").value);
+        let cargos = document.getElementById("func").value
+       
+
+        switch(cargos){
+            case "gerente":
+                novoSalario = salarioFloat+(salarioFloat*0.05)
+                aumento = salarioFloat*0.05
+                alert("Aumento : R$" + aumento)
+                alert("Total : R$" +novoSalario)
+                break;
+
+            case "supervisores":
+                novoSalario = salarioFloat+(salarioFloat*0.08)
+                aumento = salarioFloat*0.08
+                alert("Aumento : R$" + aumento)
+                alert("Total : R$" +novoSalario)
+                break;
+
+            case "Operador":
+                novoSalario = salarioFloat+(salarioFloat*0.09)
+                aumento = salarioFloat*0.09
+                alert("Aumento : R$" + aumento)
+                alert("Total : R$" +novoSalario)
+                break;
+
+            case "Colaboradores":
+                novoSalario = salarioFloat+(salarioFloat*0.1)
+                aumento = salarioFloat*0.1
+                alert("Aumento : R$" + aumento)
+                alert("Total : R$" +novoSalario)
+                break;
+                 
+        }
+}
+</script>
+    
+</html>

@@ -45,6 +45,9 @@
 
 }
 body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
     background-image: linear-gradient(to right , #083661, #0D59A1,
      #137DE0);
 }
