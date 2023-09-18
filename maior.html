@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./estilos/estilizaLista.css">
     <link rel="stylesheet" href="./estilos/footer.css">
     <link rel="stylesheet" href="./estilos/form.css">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Maioridade</title>
     <style>
       footer{
             position: absolute;
@@ -16,12 +18,11 @@
 </head>
 <body>
   <iframe src="header.html" frameborder="0" width="100%"></iframe>
-  
   <div>
     <form>
-      <label for="idade" class="textoW">Informe sua idade:</label>
-      <input type="number" id="idade" placeholder="Sua idade:">
-      <button onclick="salvar()">Salvar</button>
+       <label for="idade" class="form-label ">Informe sua idade:</label>
+      <input type="number" class="form-control form-control-sm " id="idade" placeholder="Sua idade:">
+      <button type="submit" class="btn btn-light border-black" onclick="salvar()">Salvar</button>
     </form>
   </div>
   
@@ -31,12 +32,16 @@
         function salvar(){
             let ipIdade = document.getElementById("idade") 
           if(ipIdade.value == ''){
-            alert("Informe idade")
+            alert("Informe uma idade!")
             ipIdade.focus()
             return
           }
+          if(ipIdade.value <0){
+            alert("Indique uma idade válida(maior que zero)")
+            ipIdade.focus();
+            return
+          }
           alert("Idade inserida: " + ipIdade.value)
-
           if(ipIdade.value < 18){
             alert("Você é menor de idade!")
           }
