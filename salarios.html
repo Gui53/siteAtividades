@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="./estilos/texto.css">
     <link rel="stylesheet" href="./estilos/estilizaLista.css">
     <link rel="stylesheet" href="./estilos/footer.css">
-    <link rel="stylesheet" href="./estilos/salario.css">
+     <link rel="stylesheet" href="./estilos/salario.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <title>CalculaSalario</title>
     <style>
@@ -14,18 +15,16 @@
             position: absolute;
         }
         input[type=number ]{
-            width: 150px;
+            width: 280px;
         }
     </style>
 </head>
 <body>
     <iframe src="header.html" frameborder="0" width="100%"></iframe>
-    <div>
-        <form class="flex-direction: column; tex" >
-            <fieldset>
-                <legend>Funcionário</legend>
-                    <label for="func">Selecione Funcionário:</label>
-                    <select name="func" id="func" required>
+    <div class="">
+        <form class="flex-direction: column;"  >
+                    <label  for="func" class="form-label">Selecione Funcionário:</label>
+                    <select class="form-select form-select-sm" name="func" id="func" required>
                         <option value="gerente">Gerente</option>
                         <option value="supervisores">Supervisores</option>
                         <option value="Operador">Operadores</option>
@@ -33,8 +32,7 @@
                     </select>
                     <label for="salario">Fale o salário</label>
                     <input type="number" name="salario" id="salario" placeholder="Salário:">
-                    <button onclick="salvar()">Salvar</button>
-                </fieldset>
+                    <button type="submit" class="btn btn-light mt-3" onclick="salvar()">Salvar</button>
         </form>
     </div>
     <script src="footer.js"></script>

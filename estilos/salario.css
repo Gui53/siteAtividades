@@ -1,11 +1,12 @@
 input[type="number"]{
-    width: 90%;
+    width: 100%;
     padding: 4px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     border: 2px solid black;
     border-radius: 9px;
 }
 form{
+    align-items: center;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -13,9 +14,9 @@ form{
     margin-left: 6px;
     color: white;
 }
-button{
+/* button{
     margin-left: 1px; 
     border-radius: 4px;
     height: 30px;
     width: 60px;
-}
+} */
