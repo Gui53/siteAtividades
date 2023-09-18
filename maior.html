@@ -21,7 +21,7 @@
   <div>
     <form>
        <label for="idade" class="form-label ">Informe sua idade:</label>
-      <input type="number" class="form-control form-control-sm " id="idade" placeholder="Sua idade:">
+      <input type="number" class="form-control form-control-sm " id="idade" placeholder="Sua idade:" required>
       <button type="submit" class="btn btn-light border-black" onclick="salvar()">Salvar</button>
     </form>
   </div>
@@ -31,11 +31,7 @@
 
         function salvar(){
             let ipIdade = document.getElementById("idade") 
-          if(ipIdade.value == ''){
-            alert("Informe uma idade!")
-            ipIdade.focus()
-            return
-          }
+      
           if(ipIdade.value <0){
             alert("Indique uma idade válida(maior que zero)")
             ipIdade.focus();
