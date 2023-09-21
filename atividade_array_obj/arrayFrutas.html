@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+        <div class="mb-3 p-3">
+            <label for="fruta" class="form-label">Digite alguma Fruta:</label>
+            <input type="text" class="form-control form-control-sm" id="fruta" placeholder="fruta" required>
+            <button onclick="inserir(), salvar()">Salvar</button>
+        </div>
+        <hr>
+    <ul>
+
+    </ul>
+</body>
+    <script>
+        
+        var frutas=[]
+
+        function salvar(){
+            var pegar = frutas.length
+
+            var itens =''
+            for(let i = 0; i < pegar; i++){
+                itens += `<li> ${frutas[i]} </li>`
+            }
+            document.getElementsByTagName('ul')[0].innerHTML = itens
+        }
+        function inserir(){
+            let addFruta = document.getElementById('fruta')
+            
+            if(addFruta.value == ''){
+                alert("Insira alguma fruta.")
+                addFruta.focus()
+                return
+            }
+            if(existeFruta(addFruta.value)){
+                alert("Esta fruta já está em sua cesta!")
+                addFruta.focus()
+                return
+            }
+             /* if(frutas.includes(novaFruta.value)){
+               alert('Esta fruta já está na cesta')
+               novaFruta.focus()
+               return
+            }*/
+            // let indice = frutas.indexOf(novaFruta.value)
+            // //alert(indice)
+            // if( indice >= 0){
+            //    alert('Esta fruta já está na cesta')
+            //    novaFruta.focus()
+            //    return
+            // }    
+
+            frutas.push(addFruta.value)
+            addFruta.value = ''
+        }
+        function existeFruta(item){
+            var size = frutas.length
+            for(let i = 0; i< size; i++){
+                if(item == frutas[i]){
+                    return true
+                }
+            }
+            return false
+        }
+    </script>
+</html>
