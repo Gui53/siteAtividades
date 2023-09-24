@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>View Fruits</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+
+        }
+        tbody{
+            align-items: center;
+        }
+        p{
+            font-size: larger;
+            font-family: 'Times New Roman', Times, serif;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+        <div class="mb-3 p-3">
+            <label for="fruta" class="form-label">Digite alguma Fruta:</label>
+            <input type="text" class="form-control form-control-sm" id="fruta" placeholder="Fruta:">
+            <button class="btn btn-primary" onclick="inserir(), salvarEmP()">Salvar Em Linha</button>
+            <button class="btn btn-primary" onclick="inserir(), salvarEmLista()">Salvar Em Lista</button>
+            <button class="btn btn-primary" onclick="inserir(), salvarEmTbl()">Salvar Em Tabela</button>
+        </div>
+        <hr>
+    
+    <section class="m-3">
+        
+    </section>
+
+    <table class="table table-striped table-bordered m-4 w-auto">
+        <thead>
+            <th2>
+                <td>Frutas escolhidas:</td>
+            </th2>
+        </thead>
+        <tbody >
+
+        </tbody>
+
+    </table>
+
+        <ul>
+
+        </ul>
+        
+</body>
+    <script>
+        
+        var frutas=[]
+
+        function salvarEmP(){
+            var pegar = frutas.length
+
+            var itens= ''
+            for(let i = 0; i < pegar; i++){
+                itens += `<p> ${frutas[i]} -  </p>`
+            }
+            document.getElementsByTagName('section')[0].innerHTML = itens
+        }
+
+        function salvarEmLista(){
+            var pegar = frutas.length
+
+            var itens =''
+            for(let i = 0; i < pegar; i++){
+                itens += `<li> ${frutas[i]} </li>`
+            }
+            document.getElementsByTagName('ul')[0].innerHTML = itens
+        }
+
+        function salvarEmTbl(){
+            var pegar = frutas.length
+
+            var itens= ''
+            for(let i = 0; i < pegar; i++){
+                itens += `<tr>
+                            <td> ${frutas[i]} </td>
+                        </tr>`
+            }
+            document.getElementsByTagName('tbody')[0].innerHTML = itens
+        }
+        function inserir(){
+            let addFruta = document.getElementById('fruta')
+            
+            if(addFruta.value == ''){
+                alert("Insira alguma fruta.")
+                addFruta.focus()
+                return
+            }
+            if(existeFruta(addFruta.value)){
+                alert("Esta fruta já está em sua cesta!")
+                addFruta.focus()
+                return
+            }
+             /* if(frutas.includes(novaFruta.value)){
+               alert('Esta fruta já está na cesta')
+               novaFruta.focus()
+               return
+            }*/
+            // let indice = frutas.indexOf(novaFruta.value)
+            // //alert(indice)
+            // if( indice >= 0){
+            //    alert('Esta fruta já está na cesta')
+            //    novaFruta.focus()
+            //    return
+            // }    
+
+            frutas.push(addFruta.value)
+            addFruta.value = ''
+        }
+        function existeFruta(item){
+            var size = frutas.length
+            for(let i = 0; i< size; i++){
+                if(item == frutas[i]){
+                    return true
+                }
+            }
+            return false
+        }
+    </script>
+</html>
