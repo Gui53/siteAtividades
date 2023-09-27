@@ -11,17 +11,39 @@
 <body class="m-4 d-flex flex-column bg-dark">
     <label for="num" class="form-label text-white  mb-3 m-auto">Informe número:</label>
     <input class="form-control form-control-sm w-25 mb-2 m-auto" type="number" id="num" placeholder="Número" required>
-    <button class="btn btn-danger mb-2 m-auto" style="width: 20%;" onclick="inserir()">Salvar</button>
-    <button class="btn btn-danger mb-2 m-auto" style="width: 20%;" onclick="padrao()">Padrão</button>
-    <button class="btn btn-danger mb-2 m-auto" style="width: 20%;" onclick="crescente()">Crescente</button>
+    <button class="btn btn-danger mb-2 m-auto" style="width: 20%;" onclick="inserir()">Salvar</button> 
+    <h2 class="text-white text-center" >Formas de Exibir:</h2>
+    <button class="btn btn-danger mb-2 m-auto" style="width: 15%;" onclick="padrao()">Padrão</button>
+    <button class="btn btn-danger mb-2 m-auto" style="width: 15%;" onclick="crescente()">Crescente</button>
+    <button class="btn btn-danger mb-2 m-auto" style="width: 15%;" onclick="decrescente()">Decrescente</button>
+
+    
     <ol class="text-white">
 
     </ol>
+    <div class=" m-4">
+
+        <div class="row col-4 text-white">
+            <label for="encontra">Encontrar Número</label>
+            <input class="form-control mb-2 " style="width: 60%;" type="text" id="encontra" placeholder="Digite posição de número:">
+            <button class="btn btn-primary mt-4 w-50 " onclick="mostrarPosicao()">Pesquisar</button>
+
+        </div>
+        
+        <div class="col-3">
+        </div>
+
+        <div class="col-4">
+            <input type="text" class="form-control mb-2 mt-3" id="resultado">
+        </div>
+    </div>    
+
 </body>
     <script>
         var numeros = []
 
         var padraoN = []
+
         function padrao(){
             var pegar = padraoN.length
             var itens = ''
@@ -56,15 +78,57 @@
             document.getElementsByTagName('ol')[0].innerHTML = itens
 
         }
+        
+        function decrescente(){
+            var armz
 
+            for(let i = 0; i < numeros.length; i++){
+                for(let j = 0; j < numeros.length-1;j++){
+                    if (numeros[j] < numeros[j+1]) {
+                        armz =numeros[j]
+                        numeros[j] = numeros[j+1]
+                        numeros[j + 1] = armz
+                    }
+                }
+            }   
+            var organiza = 0
+            var itens = ''
+            while (organiza < numeros.length){
+                itens += `<li> ${numeros[organiza]}</li>`
+                organiza++
+            } 
+            document.getElementsByTagName('ol')[0].innerHTML = itens
+        }
+        
+        
         function inserir(){
-
-            let addNum = document.getElementById("num")
             
+            let addNum = document.getElementById("num")
+            if (addNum.value == "") {
+                alert("Insira um número!")
+                addNum.focus()
+                return
+            }
             numeros.push(parseFloat(addNum.value))
             padraoN.push(parseFloat(addNum.value))
-
+            
             addNum.value =''
+            addNum.focus()
+            return
         }
-    </script>
+
+        function pesquisar(numero){
+            for(let i = 0; i < numeros.length; i++){
+                if (numeros[i] == numero) {
+                    return i+1
+                }
+            }
+            return -1  
+        }
+
+        function mostrarPosicao(){
+            let procuraPosicao = document.getElementById('encontra')
+            document.getElementById('resultado').value = pesquisar(procuraPosicao.value)
+        }
+        </script>
 </html>
