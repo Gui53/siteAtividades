@@ -40,6 +40,12 @@
         <input class="form-control" id="numeroExcluir" style="width: 60%;" type="number" placeholder="Digite número que quer excluir">
         <button class="btn btn-danger mt-2" onclick="excluir(), padrao(), crescente(), decrescente()">Excluir</button>
     </div>
+    <div class="col-4 text-white m-4">
+        <h2>Trocar número</h2>
+        <input class="form-control mb-2" id="numeroTrocado" style="width:60% ;" type="number" placeholder="Número que quer trocar">
+        <input class="form-control" style="width:60% ;" id="novoNumero" type="number" placeholder="Novo número">
+        <button class="btn btn-success mt-2" onclick="trocar(), padrao(), crescente(), decrescente()">Trocar</button>
+    </div>
 
 </body>
     <script>
@@ -148,10 +154,34 @@
         function excluir(){
             let numeroExcluir = document.getElementById("numeroExcluir")
             let nposicao = pesquisar(numeroExcluir.value)
+            if (numeroExcluir.value == '' || nposicao == -1) {
+                alert("Você deve escolher um item na lista para poder excluir")
+                numeroExcluir.value = ''
+                numeroExcluir.focus()
+                return
+            }
 
             numeros.splice(nposicao-1, 1)
             numeroExcluir.value = ''
         }
+        function trocar(){
+            let numeroTrocar = document.getElementById('numeroTrocado')
+            let posicao = pesquisar(numeroTrocar.value)
 
+            let novoNumero = document.getElementById('novoNumero')
+            if (numeroTrocar.value == "" || posicao == -1) {
+                alert("Você deve inserir algum item, ou algum que esteje na lista")
+                numeroTrocar.value = ''
+                numeroTrocar.focus()
+
+                novoNumero.value = ''
+                return
+            }
+            numeros.splice(posicao-1, 1)
+            numeros.push(parseFloat(novoNumero.value))
+
+            numeroTrocar.value = ''
+            novoNumero.value = ''
+        }
         </script>
 </html>
