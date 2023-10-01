@@ -28,7 +28,7 @@
         </div>
         <div class="mt-2">
             <h3 class="p-3">Carrinho:</h3>
-
+            <p class="p-2" id="vTotal"></p>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -36,6 +36,7 @@
                         <th>Valor Unitário</th>
                         <th>Quantidade</th>
                         <th style="margin-left: 10px;">Ações</th>
+                        <th>Valor Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +52,7 @@
 
         let editarProdutos = {}
 
+
         function salvar(){
             let inputDescricao = document.getElementById('descricao')
             let inputValor = document.getElementById('valor')
@@ -61,56 +63,29 @@
                 inputDescricao.focus()
                 return
             }
-            if(inputValor.value == ''){
-                alert("Dê algum valor para o produto ")
-                inputValor.focus()
-                return
-            }
-            if(inputQntd.value == ''){
-                alert("Informe a quantidade do produto ")
+            if(inputValor.value == '' || inputValor.value < 0 || inputQntd.value == '' || inputQntd < 0){
+                alert("Você deve digitar um número acima de zero para o produto ")
                 inputQntd.focus()
-                return
-            }
-
-
-
-            if(existeProduto(inputDescricao.value)){
-                alert("Este produto já foi informado, para altera-lo, clique em editar na sessão 'Carrinho'")
-                inputDescricao.focus()
+                inputValor.focus()
                 return
             }
 
             let novoProduto = {
                 descricao: inputDescricao.value ,
                 valor: inputValor.value ,
-                quantidade: inputQntd.value
+                quantidade: inputQntd.value ,
+                total: inputValor.value*inputQntd.value
             }
-            
-            // if (inputDescricao.value == novoProduto) {
-            //     console.log("passei por aqui")
-            //     alert("Este produto já foi informado, para altera-lo, clique em editar na sessão 'Carrinho'")
-            //     inputDescricao.focus()
-            //     return
-            // }
+
             produtos.push(novoProduto)
 
             inputDescricao.value = ''
             inputValor.value = ''
             inputQntd.value = ''
 
-
-
             consultar()
         }
-        function existeProduto(it){
-            var size = editarProdutos.length
-            for(let i = 0; i < size; i++){
-                if(it == editarProdutos[i]){
-                    return true
-                }
-            }
-            return false
-        }
+        
         function consultar(){
             itens = ''
             for (let i = 0; i < produtos.length; i++) {
@@ -118,11 +93,12 @@
                             <td> ${produtos[i].descricao}</td>
                             <td> ${produtos[i].valor}</td>
                             <td> ${produtos[i].quantidade}</td>
-                            <td><button class = "btn btn-primary" onclick="editar('${i}')">Editar</button></td>
-                            <td><button class = "btn btn-danger" onclick=excluir('${i}')>Excluir</button></td>
+                            <td><button class = "btn btn-primary" onclick="editar('${i}')">Editar</button><button class = "btn btn-danger" onclick=excluir('${i}')>Excluir</button></td>
+                            <td> R$${produtos[i].total}</td>
                           </tr> `                
             }
             document.getElementsByTagName('tbody')[0].innerHTML = itens
+            calculo();
         }
 
         function editar(item){
@@ -145,31 +121,40 @@
                 descricao.focus()
                 return
             }
-            if(valor.value == ''){
-                alert("Dê algum valor para o produto ")
+            if(valor.value == '' || valor.value < 0){
+                alert("Dê algum valor válido para o produto ")
                 valor.focus()
                 return
             }
-            if(quantidade.value == ''){
-                alert("Informe a quantidade do produto ")
+            if(quantidade.value == '' || quantidade.value < 0){
+                alert("Informe uma quantidade válida para o produto ")
                 quantidade.focus()
                 return
             }
 
-
             descricao.value = ""
             valor.value = ""
             quantidade.value = ""
+            editarProdutos.total = editarProdutos.valor * editarProdutos.quantidade
 
             document.getElementById('editar').setAttribute('disabled', 'true')
             document.getElementById('salvar').removeAttribute('disabled')
 
             consultar()
-
         }
         function excluir(item){
-            produtos.splice(item, 1)
-            consultar()
+            let confirma = window.confirm("Deseja excluir o produto?");
+            if(confirma){
+                produtos.splice(item, 1)
+                consultar()
+            }
+        }
+        function calculo(){
+            var total = 0
+            produtos.map((prod) => {
+                total += (prod.valor * prod.quantidade);
+            });
+            vTotal.innerHTML = "Valor Total: R$" + total + "";
         }
     </script>
 </html>
